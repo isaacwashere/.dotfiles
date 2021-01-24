@@ -286,6 +286,9 @@ nmap cc :Commands!<CR>
 " Strip trailing whitespace
 nmap sws :StripWhitespace<CR>
 
+" List buffers and jump to a chosen one via number
+nnoremap <leader>, :ls<CR>:b<Space>
+
 
 " =====================================================================
 " Aliases and Commands
