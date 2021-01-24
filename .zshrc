@@ -174,3 +174,5 @@ eval "$(direnv hook zsh)"
 
 export HEROKU_APP_NAME="Isaac"
 alias dotfiles='/usr/bin/git --git-dir=/Users/isaac/.dotfiles/ --work-tree=/Users/isaac'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
