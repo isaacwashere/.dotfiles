@@ -30,6 +30,7 @@ syntax on
 
 " Turn off sound effects when get to end of line
 set noerrorbells
+set belloff=all
 
 " tab is only 2 characters
 set tabstop=2
@@ -203,6 +204,16 @@ endfunction
 " TODO: Make sure this section makes sense
 " -----------
 
+" Set FZF background colors to theme colors
+let g:fzf_colors =
+  \ {
+  \   'fg': ['fg', 'Normal'],
+  \   'bg': ['bg', 'Normal']
+  \  }
+
+" Show fzf window in bottom half of screen
+let g:fzf_layout = { 'down': '~40%' }
+
 " ripgrep should detect the root of the project and respect my .gitignore
 if executable('rg')
     let g:rg_derive_root='true'
@@ -284,16 +295,16 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 
 " Use fzf for in-buffer search
-nmap / :BLines!<CR>
+nmap / :BLines<CR>
 
 " Use fzf for project-wide search
-nmap <leader>/ :Rg!<CR>
+nmap <leader>/ :Rg<CR>
 
 " Use fzf for filename search
-nmap <leader>ff :Files!<CR>
+nmap <leader>ff :Files<CR>
 
 " Use fzf for an available commands search
-nmap cc :Commands!<CR>
+nmap cc :Commands<CR>
 
 " Strip trailing whitespace
 nmap sws :StripWhitespace<CR>
