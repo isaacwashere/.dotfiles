@@ -256,14 +256,14 @@ let g:ctrlsf_ackprg = '/usr/bin/rg'
   let g:vimwiki_root = '~/vimwiki'
   let g:vimwiki_listsyms = '✗○◐●✓'
   let g:vimwiki_list = [
-    \{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md' },
-    \{'path': '~/vimwiki/air', 'syntax': 'markdown', 'ext': '.md' },
-    \{'path': '~/vimwiki/general', 'syntax': 'markdown', 'ext': '.md' },
-    \{'path': '~/vimwiki/pinkyup', 'syntax': 'markdown', 'ext': '.md' },
-    \{'path': '~/vimwiki/air/fixes', 'syntax': 'markdown', 'ext':'.md'},
-    \{'path': '~/vimwiki/air/features', 'syntax': 'markdown', 'ext':'.md' },
-    \{'path': '~/vimwiki/pinkyup/fixes', 'syntax': 'markdown', 'ext':'.md' },
-    \{'path': '~/vimwiki/pinkyup/features', 'syntax': 'markdown', 'ext': '.md' },
+    \ {'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md' },
+    \ {'path': '~/vimwiki/air', 'syntax': 'markdown', 'ext': '.md' },
+    \ {'path': '~/vimwiki/general', 'syntax': 'markdown', 'ext': '.md' },
+    \ {'path': '~/vimwiki/pinkyup', 'syntax': 'markdown', 'ext': '.md' },
+    \ {'path': '~/vimwiki/air/fixes', 'syntax': 'markdown', 'ext':'.md'},
+    \ {'path': '~/vimwiki/air/features', 'syntax': 'markdown', 'ext':'.md' },
+    \ {'path': '~/vimwiki/pinkyup/fixes', 'syntax': 'markdown', 'ext':'.md' },
+    \ {'path': '~/vimwiki/pinkyup/features', 'syntax': 'markdown', 'ext': '.md' },
   \ ]
 
 
