@@ -75,9 +75,6 @@ set signcolumn=yes
 " lol tbh I forgot what this does TODO: look it up
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-"show whitespaces as a dot
-set lcs+=space:·
-
 " enable true colors support
 set termguicolors
 
@@ -312,6 +309,7 @@ nmap sws :StripWhitespace<CR>
 " List buffers and jump to a chosen one via number
 nnoremap <leader>, :ls<CR>:b<Space>
 
+imap <C-g> <ESC><CR>
 
 " =====================================================================
 " Aliases and Commands
