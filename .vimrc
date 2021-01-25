@@ -309,6 +309,7 @@ nmap sws :StripWhitespace<CR>
 " List buffers and jump to a chosen one via number
 nnoremap <leader>, :ls<CR>:b<Space>
 
+" You can exit insert mode using Ctrl+G
 imap <C-g> <ESC><CR>
 
 " =====================================================================
