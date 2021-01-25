@@ -175,6 +175,18 @@ let g:lightline = {
 colorscheme onedark
 
 " -----------
+" Prettier
+" -----------
+
+" Autoformat (using prettier) on save
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+" Use my vim-prettier settings as a default, but allow .editorconfig, .prettierrc, etc. to override it
+" https://github.com/prettier/vim-prettier/issues/146#issuecomment-427082716
+" let g:prettier#config#config_precedence='file-override'
+
+" -----------
 " Nerdtree
 " -----------
 
