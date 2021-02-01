@@ -17,7 +17,6 @@ filetype plugin on
 
 " Show whitespaces, tabs, and eol characters
 " set list listchars=eol:$,tab:».,space:·
-" set list listchars=eol:$,tab:».,trail:X,extends:>,precedes:<,space:·
 
 " If a project has a .vimrc in it, that should take precedence
 set exrc
