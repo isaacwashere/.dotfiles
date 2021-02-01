@@ -47,38 +47,23 @@
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
-;;(unpin! t)
+;(unpin! t)
 
-(package! tide)
+(package! prettier-js)
 
-(package! evil-tutor)
-
-(package! move-text)
 (package! golden-ratio)
 (package! evil-indent-plus)
 
 (package! all-the-icons)
-
-(package! slim-mode)
 (package! evil-commentary)
-;; (package! web-mode)
-;; (package! evil-easymotion)
 
-(package! moe-theme)
 (package! one-themes)
-(package! ample-theme)
-(package! soothe-theme)
-(package! flatland-theme)
 (package! atom-dark-theme)
-(package! spacemacs-theme)
-(package! gruber-darker-theme)
 (package! atom-one-dark-theme)
+(package! modus-themes)
 (package! color-theme-sanityinc-tomorrow)
 
+(package! wakatime-mode)
+
 (package! company)
-(package! flycheck-popup-tip)
-;; (package! popup)
-;; (package! flycheck)
-;; (package! evil-snipe)
-;; (package! flycheck-inline)
-;; (package! flycheck-pos-tip)
+

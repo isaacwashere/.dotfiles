@@ -41,7 +41,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;; (setq display-line-numbers-type t)
 (setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -62,65 +62,29 @@
 ;; they are implemented.
 ;;
 
-(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-(use-package wakatime-mode
-  :ensure t)
+(use-package wakatime-mode)
 
 (setq confirm-kill-emacs nil)
 
 (global-wakatime-mode)
 
-
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
 
-
-;; (global-whitespace-mode 1)
-;; (setq whitespace-display-mappings
-;;   '(
-;;     (space-mark   ?\     [?·] [?.])
-;;     (newline-mark ?\n    [?$ ?\n])
-;;     (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t])
-;;     ))
-;; (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
-;; (set-face-attribute 'whitespace-space nil :background nil :foreground "#2e3138") 
-;;   ;;gray30, atom comment color: #5C6370, #40454e
-;;   ;;  for setting this color in future:
-;;   ;;    1st - Get the hex color code used as the comment
-;;   ;;    2nd - go https://www.color-hex.com/color/{colorCode}
-;;   ;;    3rd - Move 5 colors to the right, and use that code
-;; (set-face-attribute 'whitespace-tab nil :background nil :foreground "#2e3138")
-;; (set-face-attribute 'whitespace-newline nil :background nil :foreground "#2e3138")
-
-(use-package rjsx-mode
-  :ensure t
-  :mode "\\.tsx\\'" "\\.jsx\\'" "\\.js\\'")
-
-(defun setup-tide-mode()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save-mode-enabled))
-  (tide-hl-identifier-mode +1)
-  (company-mode +1)
-  )
-
-(use-package tide
-  :ensure t
-  :after (rjsx-mode company flycheck)
-  (add-hook 'rjsx-mode 'setup-tide-mode))
-
-;; (setq lsp-ui-sideline-show-code-actions nil)
 (setq lsp-ui-sideline-enable nil)
-;; (setq truncate-partial-width-windows nil)
 
-(use-package! golden-ratio
+(use-package golden-ratio
   :after-call pre-command-hook
   :config
   (golden-ratio-mode +1)
-  ;; Using this hook for resizing windows is less precise than
-  ;; `doom-switch-window-hook'.
   (remove-hook 'window-configuration-change-hook #'golden-ratio)
   (add-hook 'doom-switch-window-hook #'golden-ratio))
 
-;; (evilem-default-keybindings "SPC")
+(use-package lsp-mode
+  :hook (rjsx-mode . lsp)
+  :custom
+  (lsp-clients-typescript-server-args '("--stdio" "--tsserver-log-file" "/dev/stderr"))
+)
+
+;; (after! typescript-mode
+;;   (setq lsp-clients-typescript-server "/usr/bin/typescript-language-server"))
