@@ -41,7 +41,6 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-;; (setq display-line-numbers-type t)
 (setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -85,6 +84,24 @@
   :custom
   (lsp-clients-typescript-server-args '("--stdio" "--tsserver-log-file" "/dev/stderr"))
 )
+
+
+;; (global-whitespace-mode 1)
+;; (setq whitespace-display-mappings
+;;   '(
+;;     (space-mark   ?\     [?·] [?.])
+;;     (newline-mark ?\n    [?$ ?\n])
+;;     (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t])
+;;     ))
+;; (setq whitespace-style (quote (face spaces tabs newline space-mark tab-mark newline-mark)))
+;; (set-face-attribute 'whitespace-space nil :background nil :foreground "#2e3138") 
+;;   ;;gray30, atom comment color: #5C6370, #40454e
+;;   ;;  for setting this color in future:
+;;   ;;    1st - Get the hex color code used as the comment
+;;   ;;    2nd - go https://www.color-hex.com/color/{colorCode}
+;;   ;;    3rd - Move 5 colors to the right, and use that code
+;; (set-face-attribute 'whitespace-tab nil :background nil :foreground "#2e3138")
+;; (set-face-attribute 'whitespace-newline nil :background nil :foreground "#2e3138")
 
 ;; (after! typescript-mode
 ;;   (setq lsp-clients-typescript-server "/usr/bin/typescript-language-server"))
