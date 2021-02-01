@@ -16,7 +16,7 @@ set nocompatible
 filetype plugin on
 
 " Show whitespaces, tabs, and eol characters
-set list listchars=eol:$,tab:».,space:·
+" set list listchars=eol:$,tab:».,space:·
 " set list listchars=eol:$,tab:».,trail:X,extends:>,precedes:<,space:·
 
 " If a project has a .vimrc in it, that should take precedence
@@ -24,9 +24,6 @@ set exrc
 
 " Use relative line numbering
 set relativenumber
-
-" Basic syntax highlighting
-syntax on
 
 " Turn off sound effects when get to end of line
 set noerrorbells
@@ -46,6 +43,9 @@ set expandtab
 
 " do the best you can to indent for me
 set smartindent
+
+" allow use of system clipboard
+set clipboard=unnamed
 
 " By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
 " shown in any window) that has unsaved changes. This is to prevent you from "
@@ -75,9 +75,6 @@ set signcolumn=yes
 " lol tbh I forgot what this does TODO: look it up
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" enable true colors support
-set termguicolors
-
 " show cursor line
 set cursorline
 
@@ -92,7 +89,7 @@ set showcmd
 
 " timeoutlen is used for mapping delays, and ttimeoutlen is used for key code delays
 " It might be more reasonable to give ttimeoutlen a more reasonable value, like 10ms,
-set timeoutlen=300 ttimeoutlen=10
+set timeoutlen=175 ttimeoutlen=10
 
 " ensure enter only adds 2 spaces
 set shiftwidth=2 smarttab
@@ -105,8 +102,6 @@ set guioptions=
 " =====================================================================
 " Plugins
 " =====================================================================
-
-
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -121,17 +116,20 @@ Plug 'antoinemadec/coc-fzf'
 " Colorschemes
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
-Plug 'flazz/vim-colorschemes'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ayu-theme/ayu-vim'
 
 " File Explorer
 Plug 'scrooloose/nerdtree'
+Plug 'roman/golden-ratio'
 
 " Bottom status bar line
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 
 " Git
 Plug 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
 
 " Languages - General
 Plug 'neoclide/coc.nvim'
@@ -141,17 +139,26 @@ Plug 'ap/vim-css-color'
 Plug 'pechorin/any-jump.vim'
 Plug 'vimwiki/vimwiki'
 
+" Syntax
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+
 " Linting
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'ntpeters/vim-better-whitespace'
+" Plug 'maxmellon/vim-jsx-pretty'
 
 " Typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'ianks/vim-tsx'
+" Plug 'herringtondarkholme/yats.vim'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'ianks/vim-tsx'
 
 " Javascript
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 
 " Personal
 Plug 'wakatime/vim-wakatime'
@@ -164,35 +171,33 @@ call plug#end()
 " Plugin Settings
 " =====================================================================
 
+" -----------
+" Airline
+" -----------
 
 " One dark is the best
-set laststatus=2
-let g:lightline = {
-       \ 'colorscheme': 'onedark',
-       \ }
-colorscheme onedark
+let g:airline_powerline_fonts=1
+" let g:airline_theme='onedark'
+let g:airline_theme='dracula'
 
 " -----------
 " Prettier
 " -----------
-
 " Autoformat (using prettier) on save
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Use my vim-prettier settings as a default, but allow .editorconfig, .prettierrc, etc. to override it
 " https://github.com/prettier/vim-prettier/issues/146#issuecomment-427082716
-" let g:prettier#config#config_precedence='file-override'
+let g:prettier#config#config_precedence='file-override'
 
 " -----------
 " Nerdtree
 " -----------
-
 let NERDTreeShowHidden=1
-
 function! ToggleNERDTree()
   NERDTreeToggle
-  " Set NERDTree instances to be mirrored
+    " Set NERDTree instances to be mirrored
   silent NERDTreeMirror
 endfunction
 
@@ -247,7 +252,6 @@ let g:ctrlsf_ackprg = '/usr/bin/rg'
 " -----------
 " Vim Wiki
 " -----------
-
   let g:vimwiki_global_ext = 0
   let g:vimwiki_ext2syntax = { '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown' }
   let g:vimwiki_root = '~/vimwiki'
@@ -268,7 +272,6 @@ let g:ctrlsf_ackprg = '/usr/bin/rg'
 " Maps
 " =====================================================================
 
-
 " Space is the leader key
 let mapleader = " "
 
@@ -276,7 +279,7 @@ let mapleader = " "
 nnoremap <leader>fs :w<CR>
 
 " Magit
-nnoremap <leader>gg :Magit<CR>
+nnoremap <leader>gg :MagitOnly<CR>
 
 " Nerdtree
 nnoremap <leader>op ToggleNERDTree()<CR>
@@ -309,12 +312,45 @@ nmap sws :StripWhitespace<CR>
 " List buffers and jump to a chosen one via number
 nnoremap <leader>, :ls<CR>:b<Space>
 
-" You can exit insert mode using Ctrl+G
-imap <C-g> <ESC><CR>
+" Disable Arrow keys in Normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Close buffer
+nnoremap <leader>bk :bd<CR>         " Remap in Normal mode
+
 
 " =====================================================================
 " Aliases and Commands
 " =====================================================================
 
-
 command! SyncVim execute 'source ~/.vimrc'
+
+
+" =====================================================================
+" Important things to have last
+" =====================================================================
+
+" "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+" " Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Set colorscheme
+colorscheme dracula
+" colorscheme onedark
+" let ayucolor="mirage"
+" colorscheme ayu
+
+" Basic syntax highlighting
+syntax on
