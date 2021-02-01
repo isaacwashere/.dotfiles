@@ -147,18 +147,6 @@ Plug 'jparise/vim-graphql'
 " Linting
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'maxmellon/vim-jsx-pretty'
-
-" Typescript
-" Plug 'leafgarland/typescript-vim'
-" Plug 'ianks/vim-tsx'
-" Plug 'herringtondarkholme/yats.vim'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'ianks/vim-tsx'
-
-" Javascript
-" Plug 'pangloss/vim-javascript'
 
 " Personal
 Plug 'wakatime/vim-wakatime'
